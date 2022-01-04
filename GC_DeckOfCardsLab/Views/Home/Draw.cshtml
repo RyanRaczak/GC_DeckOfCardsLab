@@ -1,0 +1,25 @@
+﻿@model Cards
+
+<h5>Drawn</h5>
+<h6>@Model.remaining cards left</h6>
+
+<form asp-action="AddToHand">
+    @foreach (var item in Model.cards)
+    {
+        <div style="border: thin black; padding-left:2em; padding-top:2em; padding-bottom:2em;">
+            <img src="@item.image" />
+            <p>@item.value of @item.suit (@item.code)</p>
+            <p>Keep? <input type="checkbox" name="cards" value="@item.code" /></p>
+        </div>
+    }
+    <input type="submit" value="Add to Hand" />
+</form><br /><br />
+<a asp-action="ViewHand"><button>Check Hand</button></a> &emsp; <a asp-action="Draw"><button>Draw Again</button></a>
+
+<br />
+<br />
+<br />
+<a asp-action="ReturnAndShuffle"><button>Shuffle and Start Over</button></a>
+
+<br />
+<p>Deck ID: @Model.deck_id</p>

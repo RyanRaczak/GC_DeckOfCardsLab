@@ -1,0 +1,24 @@
+﻿@model CurrentHand
+
+@if (Model.piles.hand == null)
+{
+    <h4>No cards in hand</h4>
+}
+else
+{
+    @foreach (var item in Model.piles.hand.cards)
+    {
+        <div style="border: thin black; padding-left:2em; padding-top:2em; padding-bottom:2em;">
+            <img src="@item.image" />
+            <p>@item.value of @item.suit (@item.code)</p>
+        </div>
+    }
+}
+<a asp-action="Draw"><button>Draw Again</button></a>
+<br />
+<br />
+<br />
+<a asp-action="ReturnAndShuffle"><button>Shuffle and Start Over</button></a>
+
+<br />
+<p>Deck ID: @Model.deck_id</p>
